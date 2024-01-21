@@ -37,7 +37,7 @@ const router = createBrowserRouter([
     element: <Register></Register>
   },
   {
-    path: '/recovepassword',
+    path: '/recoverpassword',
     element: <RecoverPassword></RecoverPassword>
   },
   {
@@ -49,13 +49,14 @@ const router = createBrowserRouter([
     element: <PrivateRoute><Dashboard /></PrivateRoute>
   },
   {
+    path: '/forgotpassword',
+    element: <RecoverPassword></RecoverPassword>
+  },
+  {
     path: '*',
     element: <PageNotFound></PageNotFound>
   },
-  // {
-  //   path: '/profile',
-  //   element: <PrivateRoute><Profile /></PrivateRoute>
-  // }
+  
 ]);
 
 
