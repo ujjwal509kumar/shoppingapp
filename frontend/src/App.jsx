@@ -8,6 +8,7 @@ import PageNotFound from './pages/PageNotFound';
 import RecoverPassword from './pages/RecoverPassword';
 import OtpVerification from './pages/OptVerification';
 import Dashboard from './pages/Dashboard';
+import SetPassword from './pages/SetPassword';
 
 // Private Route
 const PrivateRoute = ({ children }) => {
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
   {
     path: '/forgotpassword',
     element: <RecoverPassword></RecoverPassword>
+  },
+  {
+    path: '/setpassword',
+    element: <SetPassword></SetPassword>
   },
   {
     path: '*',

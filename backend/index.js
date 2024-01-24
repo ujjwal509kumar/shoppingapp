@@ -16,6 +16,7 @@ const otpRouter = require("./routes/OtpRoute");
 const loginRouter = require("./routes/LoginRoute");
 const profileRouter = require("./routes/ProfileRoute");
 const forgottokenrouter = require("./routes/ForgotTokenRoute");
+const googleuserroute = require("./routes/GoogleUserRoute")
 
 //config mongodb
 const app = express();
@@ -56,6 +57,8 @@ app.use("/user", profileRouter);
 //for generating the forgotlink and sending on email
 app.use("/forgotpassword", forgottokenrouter);
 
+//for setting the password after regestration with google
+app.use("/setpassword", googleuserroute);
 
 
 //getting and verifying the forgotpass token

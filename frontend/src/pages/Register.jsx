@@ -4,6 +4,8 @@ import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import { useGoogleLogin } from '@react-oauth/google';
+
 const Register = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -14,7 +16,7 @@ const Register = () => {
     //Prevent default form submission behavior
     e.preventDefault();
     const RegUrl = import.meta.env.VITE_APP_URI_REGESTRATION;
-    
+
     //request to the backend API
     try {
       const response = await axios.post(`${RegUrl}`, {
@@ -56,6 +58,32 @@ const Register = () => {
 
   };
 
+  const login = useGoogleLogin({
+    onSuccess: async tokenResponse => {
+      // console.log("Token Response:", tokenResponse);
+      const accessToken = tokenResponse.access_token;
+      try {
+        const response = await fetch('https://www.googleapis.com/oauth2/v2/userinfo', {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        });
+        const userData = await response.json();
+        // console.log("User Data:", userData);
+
+        // Navigate to /setpassword with userData in state
+        navigate('/setpassword', { state: { googleemail: userData.email, googlename: userData.name } });
+        
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+      
+    },
+    onFailure: error => {
+      console.error("Login Failed:", error);
+    },
+  });
+
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
       <div className="bg-white p-6 md:p-8 lg:p-10 rounded-lg shadow-lg w-full max-w-md mx-4">
@@ -65,7 +93,7 @@ const Register = () => {
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
               Name
             </label>
-            <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring focus:border-blue-300" onChange={(e) => { setName(e.target.value) }} id="name" name="name" type="text" placeholder="Your Name" required/>
+            <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring focus:border-blue-300" onChange={(e) => { setName(e.target.value) }} id="name" name="name" type="text" placeholder="Your Name" required />
           </div>
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
@@ -87,9 +115,16 @@ const Register = () => {
               <button type="button" className="bg-gray-300 hover:bg-gray-400 text-gray-700 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full">
                 Back to Login
               </button>
-              <ToastContainer/>
+              <ToastContainer />
             </a>
           </div>
+          <p className="text-center mb-4 mt-4">OR</p>
+          <div className="mb-4 mt-4">
+            <button type="button" onClick={() => login()} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full">
+              Register with Google
+            </button>
+          </div>
+          
         </form>
       </div>
     </div>
