@@ -8,59 +8,59 @@ import MyHeader from "../components/Header"
 import MyFooter from "../components/Footer";
 
 const Login = () => {
-    const [loginemail, setloginEmail] = useState('');
-    const [loginpassword, setloginPassword] = useState('');
-    const [redirect, setRedirect] = useState('');
-    const LoginUrl = import.meta.env.VITE_APP_URI_LOGIN;
+  const [loginemail, setloginEmail] = useState('');
+  const [loginpassword, setloginPassword] = useState('');
+  const [redirect, setRedirect] = useState('');
+  const LoginUrl = import.meta.env.VITE_APP_URI_LOGIN;
 
-    const handleSignin = async (e) => {
-        e.preventDefault();
-        try {
-          const response = await axios.post(`${LoginUrl}`, {
-            loginemail,
-            loginpassword
-          });
-          if (response.status === 201) {
-            console.log(response.data);
-            localStorage.setItem("token", "barear " + response.data.token);
-            toast.success("Logged in successfully", {
-              position: "top-center",
-              autoClose: 2500,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-              theme: "light",
-            });
-            setRedirect(true);
-          } else if (response.status === 200 || response.status === 202) {
-            toast.error('Wrong email or password', {
-              position: "top-center",
-              autoClose: 2500,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-              theme: "light",
-            });
-          }
-          else {
-            console.log(response.data);
-          }
-        } catch (error) {
-          console.error(error);
-        }
+  const handleSignin = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(`${LoginUrl}`, {
+        loginemail,
+        loginpassword
+      });
+      if (response.status === 201) {
+        console.log(response.data);
+        localStorage.setItem("token", "barear " + response.data.token);
+        toast.success("Logged in successfully", {
+          position: "top-center",
+          autoClose: 2500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+        setRedirect(true);
+      } else if (response.status === 200 || response.status === 202) {
+        toast.error('Wrong email or password', {
+          position: "top-center",
+          autoClose: 2500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
       }
-      if (redirect) {
-        return <Navigate to="/profile" />;
+      else {
+        console.log(response.data);
       }
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  if (redirect) {
+    return <Navigate to="/profile" />;
+  }
 
-    return (
-        <>
-        <MyHeader></MyHeader>
-        <div className="flex items-center justify-center h-screen bg-gray-100">
+  return (
+    <main>
+      <MyHeader></MyHeader>
+      <div className="flex items-center justify-center h-screen bg-gray-100">
             <div className="bg-white p-6 rounded-lg shadow-lg">
                 <h2 className="text-2xl font-bold mb-2 text-gray-800">Login</h2>
                 <form action='POST'>
@@ -93,9 +93,10 @@ const Login = () => {
                 </div>
             </div>
         </div>
-        <MyFooter></MyFooter>
-        </>
-    );
+
+      <MyFooter></MyFooter>
+    </main>
+  );
 };
 
 export default Login;

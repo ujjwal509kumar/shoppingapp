@@ -18,6 +18,8 @@ const profileRouter = require("./routes/ProfileRoute");
 const forgottokenrouter = require("./routes/ForgotTokenRoute");
 const googleuserroute = require("./routes/GoogleUserRoute")
 
+const Product = require("./api/AddProduct");
+
 //config mongodb
 const app = express();
 const port = process.env.PORT || 5000;
@@ -59,6 +61,39 @@ app.use("/forgotpassword", forgottokenrouter);
 
 //for setting the password after regestration with google
 app.use("/setpassword", googleuserroute);
+
+//for adding the product to database
+app.post("/addproduct", async (req, res) => {
+    try {
+        const existingProduct = await Product.findOne({ name: req.body.name });
+        if (existingProduct) {
+            // If product exists, send an error response
+            return res.status(400).send({ message: 'Product already exists' });
+        }
+
+        let product = new Product(req.body);
+        let result = await product.save();
+        res.status(200).send(result);
+    } catch (error) {
+        res.status(500).send(error);
+    }
+});
+
+// GET a specific product by name
+app.get('/getproduct/:name', async (req, res) => {
+    try {
+        const productName = req.params.name;
+        const product = await Product.findOne({ name: productName });
+
+        if (product) {
+            res.status(200).send(product);
+        } else {
+            res.status(404).send({ message: 'Product not found' });
+        }
+    } catch (error) {
+        res.status(500).send(error);
+    }
+});
 
 
 //getting and verifying the forgotpass token
