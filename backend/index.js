@@ -65,7 +65,7 @@ app.use("/setpassword", googleuserroute);
 //for adding the product to database
 app.post("/addproduct", async (req, res) => {
     try {
-        const existingProduct = await Product.findOne({ name: req.body.name });
+        const existingProduct = await Product.findOne({ name: req.body.slug });
         if (existingProduct) {
             // If product exists, send an error response
             return res.status(400).send({ message: 'Product already exists' });
@@ -79,16 +79,16 @@ app.post("/addproduct", async (req, res) => {
     }
 });
 
-// GET a specific product by name
-app.get('/getproduct/:name', async (req, res) => {
+// GET all product by category
+app.get('/getproduct/:category', async (req, res) => {
     try {
-        const productName = req.params.name;
-        const product = await Product.findOne({ name: productName });
+        const categoryName = req.params.category;
+        const products = await Product.find({ category: categoryName });
 
-        if (product) {
-            res.status(200).send(product);
+        if (products.length > 0) {
+            res.status(200).send(products);
         } else {
-            res.status(404).send({ message: 'Product not found' });
+            res.status(404).send({ message: 'Products not found for the specified category' });
         }
     } catch (error) {
         res.status(500).send(error);
