@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
+import MyHeader from "../components/Header"
+import MyFooter from "../components/Footer";
+
 const Shoes = () => {
   const [products, setProducts] = useState({});
 
@@ -12,7 +15,7 @@ const Shoes = () => {
         const response = await axios.get('http://localhost:5000/getproduct/shoes');
         const fetchedProducts = response.data;
         let shoes = {};
-        
+
         for (let item of fetchedProducts) {
           if (item.title in shoes) {
             if (!shoes[item.title].color.includes(item.color) && item.avaibility > 0) {
@@ -26,7 +29,7 @@ const Shoes = () => {
             if (item.avaibility > 0) {
               shoes[item.title].color = [item.color];
               shoes[item.title].size = [item.size];
-            } 
+            }
           }
         }
 
@@ -41,6 +44,7 @@ const Shoes = () => {
 
   return (
     <div>
+      <MyHeader></MyHeader>
       <section className="text-gray-600 body-font">
         <div className="container px-5 py-24 mx-auto">
           <div className="flex flex-wrap -m-4 justify-center">
@@ -76,6 +80,7 @@ const Shoes = () => {
           </div>
         </div>
       </section>
+      <MyFooter></MyFooter>
     </div>
   );
 };
