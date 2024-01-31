@@ -96,6 +96,44 @@ app.get('/getproduct/:category', async (req, res) => {
 });
 
 
+
+app.get('/api/products/:slug', async (req, res) => {
+    try {
+        const slug = req.params.slug;
+        const foundProduct = await Product.findOne({ slug: slug });
+
+        // Check if the product exists
+        if (!foundProduct) {
+            return res.status(404).send({ error: 'Product not found' });
+        }
+
+        // Find all variants of the product based on title and category
+        const variants = await Product.find({ 
+            title: foundProduct.title, 
+            category: foundProduct.category 
+        });
+
+        // Organize variants by color and size
+        let colorSizeSlug = {};
+        for (let item of variants) {
+            if (!colorSizeSlug[item.color]) {
+                colorSizeSlug[item.color] = {};
+            }
+            colorSizeSlug[item.color][item.size] = { slug: item.slug };
+        }
+
+        // Send the product and its variants in the response
+        res.json({
+            product: foundProduct,
+            variants: colorSizeSlug
+        });
+
+    } catch (error) {
+        res.status(500).send({ error: error.message });
+    }
+});
+
+
 //getting and verifying the forgotpass token
 app.get("/forgotpassword/:id/:token", async (req, res) => {
     const { id, token } = req.params;
