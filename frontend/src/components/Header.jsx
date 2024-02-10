@@ -21,22 +21,23 @@ const Header = () => {
   const ref = useRef();
   return (
     <div>
-      <div className="flex flex-col md:flex-row md:justify-start justify-center items-center py-2 shadow-md sticky top-0 bg-white z-10">
-        <a className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+      <div className="flex flex-col px-10 py-5 md:flex-row md:justify-start justify-center items-center shadow-md sticky top-0 bg-white z-10">
+        <a href="" className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24">
             <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
           </svg>
-          <span className="ml-3 text-xl">Tailblocks</span>
+          <span className="ml-3 text-xl">Shop360</span>
         </a>
         <div className="nav">
           <ul className="flex items-center space-x-2 font-bold md:text-xl">
             <a href="/shoes"><li className="ml-3 md:ml-20">Shoes</li></a>
-            <a href="#"><li className="ml-3">title</li></a>
-            <a href="#"><li className="ml-3">title</li></a>
-            <a href="#"><li className="ml-3">title</li></a>
+            <a href="#"><li className="ml-3">Mens</li></a>
+            <a href="#"><li className="ml-3">Womens</li></a>
+            <a href="#"><li className="ml-3">Kids</li></a>
+            <a href="#"><li className="ml-3">Pets</li></a>
           </ul>
         </div>
-        <div className="cart absolute right-0 top-3 mx-5">
+        <div className="cart absolute right-0  px-5">
           <button><AiOutlineShoppingCart onClick={closeCart} className="cursor-pointer text-xl md:text-3xl" /></button>
         </div>
 
