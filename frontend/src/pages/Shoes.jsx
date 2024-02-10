@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-import MyHeader from "../components/Header"
-import MyFooter from "../components/Footer";
+
 
 const Shoes = () => {
   const [products, setProducts] = useState({});
@@ -44,7 +43,7 @@ const Shoes = () => {
 
   return (
     <div>
-      <MyHeader></MyHeader>
+      
       <section className="text-gray-600 body-font">
         <div className="container px-5 py-24 mx-auto">
           <div className="flex flex-wrap -m-4 justify-center">
@@ -80,7 +79,7 @@ const Shoes = () => {
           </div>
         </div>
       </section>
-      <MyFooter></MyFooter>
+      
     </div>
   );
 };

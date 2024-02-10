@@ -4,8 +4,7 @@ import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import MyHeader from "../components/Header"
-import MyFooter from "../components/Footer";
+
 
 const Login = () => {
   const [loginemail, setloginEmail] = useState('');
@@ -59,7 +58,7 @@ const Login = () => {
 
   return (
     <main>
-      <MyHeader></MyHeader>
+      
       <div className="flex items-center justify-center h-screen bg-gray-100">
             <div className="bg-white p-6 rounded-lg shadow-lg">
                 <h2 className="text-2xl font-bold mb-2 text-gray-800">Login</h2>
@@ -94,7 +93,7 @@ const Login = () => {
             </div>
         </div>
 
-      <MyFooter></MyFooter>
+      
     </main>
   );
 };

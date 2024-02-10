@@ -4,8 +4,7 @@ import { Navigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import MyHeader from "../components/Header"
-import MyFooter from "../components/Footer";
+
 
 const RecoverPassword = () => {
   const [forgotemail, setForgotemail] = useState('');
@@ -55,7 +54,7 @@ const RecoverPassword = () => {
 
   return (
     <>
-      <MyHeader></MyHeader>
+    
       <div className="bg-gray-100 flex items-center justify-center h-screen">
         <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
           <h2 className="text-3xl font-semibold mb-10 text-center text-gray-800">Forgot Password</h2>
@@ -79,7 +78,7 @@ const RecoverPassword = () => {
         </div>
       </div>
       <ToastContainer />
-      <MyFooter></MyFooter>
+    
     </>
   )
 }

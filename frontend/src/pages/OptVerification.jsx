@@ -4,8 +4,7 @@ import { useLocation, Navigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import MyHeader from "../components/Header"
-import MyFooter from "../components/Footer";
+
 
 export default function OtpVerification() {
     const [enterdotp, setEnterdotp] = useState('');
@@ -74,7 +73,7 @@ export default function OtpVerification() {
 
     return (
         <div>
-            <MyHeader></MyHeader>
+           
             <div className="relative flex min-h-screen flex-col justify-center overflow-hidden bg-gray-50 py-12">
                 <div className="relative bg-white px-6 pt-10 pb-9 shadow-xl mx-auto w-full max-w-lg rounded-2xl">
                     <div className="mx-auto flex w-full max-w-md flex-col space-y-16">
@@ -118,7 +117,7 @@ export default function OtpVerification() {
                     </div>
                 </div>
             </div>
-            <MyFooter></MyFooter>
+          
         </div>
     )
 }

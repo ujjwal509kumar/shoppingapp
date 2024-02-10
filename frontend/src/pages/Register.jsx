@@ -6,8 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import { useGoogleLogin } from '@react-oauth/google';
 
-import MyHeader from "../components/Header"
-import MyFooter from "../components/Footer";
+
 
 const Register = () => {
   const [name, setName] = useState('');
@@ -89,7 +88,7 @@ const Register = () => {
 
   return (
     <main>
-      <MyHeader></MyHeader>
+      
       <div className="flex justify-center items-center min-h-screen bg-gray-100">
         <div className="bg-white p-6 md:p-8 lg:p-10 rounded-lg shadow-lg w-full max-w-md mx-4">
           <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">Registration</h2>
@@ -133,7 +132,7 @@ const Register = () => {
           </form>
         </div>
       </div>
-      <MyFooter></MyFooter>
+     
     </main>
   );
 }
