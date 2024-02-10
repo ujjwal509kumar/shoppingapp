@@ -8,7 +8,18 @@
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-
+    <script src="https://cdn.jsdelivr.net/npm/@srexi/purecounterjs/dist/purecounter_vanilla.js"></script>
+<script>
+  new PureCounter({
+    selector: ".purecounter", 
+    duration: 2, // The time in seconds for the animation to complete [seconds]
+    delay: 10, // The delay between each iteration (the default of 10 will produce 100 fps) [miliseconds]
+    once: false, // Counting at once or recount when the element in view [boolean]
+    pulse: 20, // Repeat count for certain time [boolean:false|seconds]
+    legacy: true, // If this is true it will use the scroll event listener on browsers
+    separator: false, // This will enable/disable comma separator for thousands. Use it for set the symbol too [boolean|char|string]
+});
+</script>
   </head>
   <body>
     <style>
