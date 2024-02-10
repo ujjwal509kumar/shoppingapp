@@ -1,5 +1,3 @@
-import Header from '../components/Header'
-import Footer from '../components/Footer'
 import TextRecycler from '../components/TextRecycler'
 import RightArrow from '../components/RightArrow'
 import ProductSection from '../components/ProductSection'

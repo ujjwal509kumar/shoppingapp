@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+/* styles.css */
+.categoriescard .animate__animated.animate__fadeInLeft {
+    display: none;
+  }
+  
+  .categoriescard:hover .animate__animated.animate__fadeInLeft {
+    display: inline-block;
+  }
+  
