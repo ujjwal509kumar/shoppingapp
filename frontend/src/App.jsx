@@ -1,5 +1,6 @@
 import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { CartProvider } from './context/CartContext';
 import './index.css'
 import Home from './pages/Home';
 import Login from './pages/Login';
@@ -11,6 +12,10 @@ import Dashboard from './pages/Dashboard';
 import SetPassword from './pages/SetPassword';
 import Shoes from './pages/Shoes';
 import Product from './pages/Product';
+import Checkout from './pages/Checkout';
+import Header from './components/Header';
+import Footer from './components/Footer';
+
 
 // Private Route
 const PrivateRoute = ({ children }) => {
@@ -65,20 +70,28 @@ const router = createBrowserRouter([
   },
   {
     path: '/product/:slug',
-    element : <Product></Product>
+    element: <Product />
+  },
+  {
+    path: '/checkout',
+    element: <Checkout></Checkout>
   },
   {
     path: '*',
     element: <PageNotFound></PageNotFound>
   },
-  
+
 ]);
 
 
 function App() {
   return (
     <main>
-      <RouterProvider router={router}></RouterProvider>
+      <CartProvider>
+        <Header />
+        <RouterProvider router={router}> </RouterProvider>
+        <Footer />
+      </CartProvider>
     </main>
   )
 }
