@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { useCart } from "../context/CartContext";
 
-import MyHeader from "../components/Header"
-import MyFooter from "../components/Footer";
 
 const ProductPage = () => {
+    const { addToCart, buyNow } = useCart();
 
     const { slug } = useParams();
     const [productDetails, setProductDetails] = useState({
@@ -87,7 +87,7 @@ const ProductPage = () => {
 
     return (
         <div>
-            <MyHeader />
+
             <section className="text-gray-600 body-font overflow-hidden">
                 <div className="container px-5 py-24 mx-auto">
                     <div className="lg:w-4/5 mx-auto flex flex-wrap">
@@ -130,15 +130,17 @@ const ProductPage = () => {
                             </div>
                             <div className="flex">
                                 <span className="title-font font-medium text-2xl text-gray-900">₹{productDetails.price}</span>
-                                <button className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Buy Now</button>
+                                <button onClick={()=>{buyNow(slug, 1, productDetails.price, productDetails.title, productDetails.size, productDetails.color)}} className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Buy Now</button>
+                                <button onClick={() => { addToCart(slug, 1, productDetails.price, productDetails.title, productDetails.size, productDetails.color) }} className='flex ml-4 text-white bg-indigo-500 border-0 py-2 px-2 md:px-6 focus:outline-none hover:bg-indigo-600 rounded'>Add to Cart</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-            <MyFooter />
+
         </div>
     );
 };
+
 
 export default ProductPage;
