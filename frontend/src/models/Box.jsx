@@ -22,7 +22,7 @@ const Box = () => {
       .hexPolygonColor(() => "white");
 
     Globe.arcsData(lines.pulls)
-      .arcColor(() => "pink")
+      .arcColor(() => "white")
       .arcDashLength(0.9)
       .arcDashGap(4)
       .arcDashAnimateTime(3000)
