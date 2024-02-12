@@ -118,10 +118,10 @@ function ProductSection() {
     <div className='flex'>
       <div className="lg:mx-12">
       <div className="mt-4 space-y-4 lg:mt-8">
-          <a onClick={() => handleSectionChange('mens')} className={`block ${isSelected('mens') ? 'text-blue-500' : 'text-gray-500'} hover:underline`}>Mens</a>
-          <a onClick={() => handleSectionChange('kids')} className={`block ${isSelected('kids') ? 'text-blue-500' : 'text-gray-500'} hover:underline`}>Kids</a>
-          <a onClick={() => handleSectionChange('womens')} className={`block ${isSelected('womens') ? 'text-blue-500' : 'text-gray-500'} hover:underline`}>Womens</a>
-          <a onClick={() => handleSectionChange('pets')} className={`block ${isSelected('pets') ? 'text-blue-500' : 'text-gray-500'} hover:underline`}>Pets</a>
+          <a onClick={() => handleSectionChange('mens')} className={`block ${isSelected('mens') ? 'text-blue-500' : 'text-gray-500'} hover:bg-blue-500 hover:text-white hover:rounded hover:px-2 hover:py-2`}>Mens</a>
+          <a onClick={() => handleSectionChange('kids')} className={`block ${isSelected('kids') ? 'text-blue-500' : 'text-gray-500'} hover:bg-blue-500 hover:text-white hover:rounded hover:px-2 hover:py-2`}>Kids</a>
+          <a onClick={() => handleSectionChange('womens')} className={`block ${isSelected('womens') ? 'text-blue-500' : 'text-gray-500'} hover:bg-blue-500 hover:text-white hover:rounded hover:px-2 hover:py-2`}>Womens</a>
+          <a onClick={() => handleSectionChange('pets')} className={`block ${isSelected('pets') ? 'text-blue-500' : 'text-gray-500'} hover:bg-blue-500 hover:text-white hover:rounded hover:px-2 hover:py-2`}>Pets</a>
         </div>
       </div>
 

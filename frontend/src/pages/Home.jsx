@@ -5,6 +5,8 @@ import { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import { Center, OrbitControls } from "@react-three/drei";
 import Box from "../models/Box";
+import FAQ from "../components/FAQ";
+import TestimonialCarousel from "../components/TestimonialCarousel";
 
 const Home = () => {
   return (
@@ -17,13 +19,13 @@ const Home = () => {
         </video>
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-center">
-            <h1 className="text-3xl font-semibold text-white lg:text-4xl">
+            <h1 className="text-3xl font-semibold text-white lg:text-4xl mb-4">
               welcome to <span className="text-blue-400">Shop360</span> An
-              InHouse 360<sup>*</sup> Experience
+              In-House 360<sup>*</sup> Experience
             </h1>
-            <button className="w-full px-5 py-2 mt-4 text-sm font-medium text-white bg-blue-600 rounded-md lg:w-auto hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+            <a href="login" className="w-full h-full px-5 py-2 my-10 text-sm font-medium text-white bg-blue-600 rounded-md lg:w-auto hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
               Start Free
-            </button>
+            </a>
           </div>
         </div>
       </div>
@@ -76,6 +78,7 @@ const Home = () => {
               height="150"
               src="https://img.icons8.com/external-kiranshastry-gradient-kiranshastry/150/000000/external-hanger-clothes-and-fashion-kiranshastry-gradient-kiranshastry.png"
               alt=""
+              className="animate__animated animate__swing animate__slow animate__repeat-3"
             ></img>
           </div>
           <h1 className="text-lg text-black font-semibold mt-3">
@@ -98,6 +101,7 @@ const Home = () => {
               height="150"
               src="https://img.icons8.com/ios/150/22C3E6/mens-shoe.png"
               alt="shoes"
+              className="animate__animated  animate__rotateInDownLeft animate__slow animate__repeat-3"
             ></img>
           </div>
           <h1 className="text-lg text-black font-semibold mt-3">
@@ -120,6 +124,7 @@ const Home = () => {
               height="150"
               src="https://img.icons8.com/ios/150/22C3E6/umbrella.png"
               alt="umbrella"
+              className="animate__animated  animate__zoomInUp  animate__slow animate__repeat-3"
             ></img>
           </div>
           <h1 className="text-lg text-black font-semibold mt-3">
@@ -142,6 +147,7 @@ const Home = () => {
               height="150"
               src="https://img.icons8.com/ios/150/22C3E6/network-gateway.png"
               alt="computer hardware"
+              className="animate__animated  animate__bounceIn animate__slow animate__repeat-3"
             ></img>
           </div>
           <h1 className="text-lg text-black font-semibold mt-3">
@@ -164,6 +170,7 @@ const Home = () => {
               height="150"
               src="https://img.icons8.com/ios/150/22C3E6/software-box.png"
               alt="computer software"
+              className="animate__animated  animate__fadeInUp animate__slow animate__repeat-3"
             ></img>
           </div>
           <h1 className="text-lg text-black font-semibold mt-3">
@@ -221,148 +228,7 @@ const Home = () => {
       {/* FIFTH SECTION END */}
 
       {/* SIXTH SECTION START */}
-      <section className="bg-white ">
-        <div className="container px-6 py-12 mx-auto">
-          <h1 className="text-2xl font-semibold text-gray-800 lg:text-3xl lg:ml-10">
-            Frequently asked questions
-          </h1>
-
-          <div className="mt-8 space-y-8 lg:ml-12">
-            <div className="p-8 bg-gray-100 rounded-lg ">
-              <button className="flex items-center justify-between w-full">
-                <h1 className="font-semibold text-gray-700 ">
-                  How i can play for my appoinment ?
-                </h1>
-
-                <span className="text-gray-400 bg-gray-200 rounded-full">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="w-6 h-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M18 12H6"
-                    />
-                  </svg>
-                </span>
-              </button>
-
-              <p className="mt-6 text-sm text-gray-500 ">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Voluptas eaque nobis, fugit odit omnis fugiat deleniti animi ab
-                maxime cum laboriosam recusandae facere dolorum veniam quia
-                pariatur obcaecati illo ducimus?
-              </p>
-            </div>
-
-            <div className="p-8 bg-gray-100 rounded-lg ">
-              <button className="flex items-center justify-between w-full">
-                <h1 className="font-semibold text-gray-700 ">
-                  Is the cost of the appoinment covered by private health
-                  insurance?
-                </h1>
-
-                <span className="text-white bg-blue-500 rounded-full">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="w-6 h-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-                    />
-                  </svg>
-                </span>
-              </button>
-            </div>
-
-            <div className="p-8 bg-gray-100 rounded-lg ">
-              <button className="flex items-center justify-between w-full">
-                <h1 className="font-semibold text-gray-700 ">
-                  Do i need a referral?
-                </h1>
-
-                <span className="text-white bg-blue-500 rounded-full">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="w-6 h-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-                    />
-                  </svg>
-                </span>
-              </button>
-            </div>
-
-            <div className="p-8 bg-gray-100 rounded-lg ">
-              <button className="flex items-center justify-between w-full">
-                <h1 className="font-semibold text-gray-700 ">
-                  What are your opening house?
-                </h1>
-
-                <span className="text-white bg-blue-500 rounded-full">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="w-6 h-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-                    />
-                  </svg>
-                </span>
-              </button>
-            </div>
-
-            <div className="p-8 bg-gray-100 rounded-lg ">
-              <button className="flex items-center justify-between w-full">
-                <h1 className="font-semibold text-gray-700 ">
-                  What can i expect at my first consultation?
-                </h1>
-
-                <span className="text-white bg-blue-500 rounded-full">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="w-6 h-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-                    />
-                  </svg>
-                </span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
+      <FAQ />
       {/* SIXTH SECTION END */}
 
       {/* SEVENTH SECTION SATRT */}
@@ -453,7 +319,7 @@ const Home = () => {
           </div>
           <center>
             <button className="bg-blue-500 rounded px-4 mt-5 py-5 text-white categoriescard">
-              Get Started For Free <RightArrow />
+             <a href="login"> Get Started For Free <RightArrow /></a>
             </button>
           </center>
         </div>
@@ -461,90 +327,7 @@ const Home = () => {
       {/* SEVENTH SECTION END */}
 
       {/* EIGTH SECTION START */}
-      <section className="bg-white dark:bg-gray-900">
-        <div className="relative flex">
-          <div className="min-h-screen lg:w-1/3"></div>
-          <div className="hidden w-3/4 min-h-screen bg-gray-100 dark:bg-gray-800 lg:block"></div>
-
-          <div className="container flex flex-col justify-center w-full min-h-screen px-6 py-10 mx-auto lg:absolute lg:inset-x-0">
-            <h1 className="text-2xl font-semibold text-gray-800 capitalize lg:text-3xl dark:text-white">
-              What our{" "}
-              <span className="text-blue-500 underline">customers</span>{" "}
-              <br></br> are saying
-            </h1>
-
-            <div className="mt-10 lg:mt-20 lg:flex lg:items-center">
-              <img
-                className="object-cover object-center w-full lg:w-[32rem] rounded-lg h-96"
-                src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
-                alt=""
-              ></img>
-
-              <div className="mt-8 lg:px-10 lg:mt-0">
-                <h1 className="text-2xl font-semibold text-gray-800 dark:text-white lg:w-72">
-                  Shop360 helped us increase our sale drastically
-                </h1>
-
-                <p className="max-w-lg mt-6 text-gray-500 dark:text-gray-400">
-                  “ shop360 is the only space wher we see some drastic sales
-                  apart from our other equallly well reupted channels. thanks to
-                  shop360 for making this possible. i sincerelly would like to
-                  further our interests with shop360 more in near future. ”
-                </p>
-
-                <h3 className="mt-6 text-lg font-medium text-blue-500">
-                  Peter Shananighan
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300">
-                  Marketing Manager at Amazonia Labs Pvt.Ltc.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-center justify-between mt-12 lg:justify-start">
-              <button
-                title="left arrow"
-                className="p-2 text-gray-800 transition-colors duration-300 border rounded-full rtl:-scale-x-100 dark:border-gray-700 dark:text-gray-200 dark:hover:bg-gray-800 hover:bg-gray-100"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-6 h-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M15 19l-7-7 7-7"
-                  />
-                </svg>
-              </button>
-
-              <button
-                title="right arrow"
-                className="p-2 text-gray-800 transition-colors duration-300 border rounded-full rtl:-scale-x-100 dark:border-gray-700 dark:text-gray-200 dark:hover:bg-gray-800 lg:mx-6 hover:bg-gray-100"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-6 h-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
+     <TestimonialCarousel />
       {/* EIGHTH SECTION END */}
 
       {/* NINTH SECTION START */}
