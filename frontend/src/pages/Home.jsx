@@ -1,7 +1,10 @@
 import RightArrow from "../components/RightArrow";
 import ProductSection from "../components/ProductSection";
 import PureCount from "../components/PureCount";
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import axios from "axios";
 import { Canvas } from "@react-three/fiber";
 import { Center, OrbitControls } from "@react-three/drei";
 import Box from "../models/Box";
@@ -9,6 +12,54 @@ import FAQ from "../components/FAQ";
 import TestimonialCarousel from "../components/TestimonialCarousel";
 
 const Home = () => {
+
+  const [Name, setName] = useState('');
+  const [Email, setEmail] = useState('');
+  const [Message, setMessage] = useState('');
+
+  const submitForm = async(e) => {
+    e.preventDefault();
+
+    const formUrl = import.meta.env.VITE_APP_URI_CONTACT_FORM;
+
+    try {
+      const response = await axios.post(`${formUrl}`, {
+        Name,
+        Email,
+        Message,
+      });
+      if (response.status === 201) {
+        console.log(response.data);
+        toast.success("email sent successfully to team", {
+          position: "top-center",
+          autoClose: 2500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      } else if (response.status === 200) {
+        toast.error('Error sending message', {
+          position: "top-center",
+          autoClose: 2500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      }
+      else {
+        console.log(response.data);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   return (
     <div>
       {/* FIRST SECTION START */}
@@ -243,13 +294,13 @@ const Home = () => {
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke-width="1.5"
+                strokeWidth="1.5"
                 stroke="currentColor"
                 className="w-10 h-10"
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                   d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z"
                 />
               </svg>
@@ -295,13 +346,13 @@ const Home = () => {
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke-width="1.5"
+                strokeWidth="1.5"
                 stroke="currentColor"
                 className="w-10 h-10"
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                   d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.193 2.056 2.056 0 0 0-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 0 0-10.026 0 1.106 1.106 0 0 0-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12"
                 />
               </svg>
@@ -351,16 +402,16 @@ const Home = () => {
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
-                    stroke-width="2"
+                    strokeWidth="2"
                   >
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                       d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
                     />
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                       d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                     />
                   </svg>
@@ -375,11 +426,11 @@ const Home = () => {
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
-                    stroke-width="2"
+                    strokeWidth="2"
                   >
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                       d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
                     />
                   </svg>
@@ -396,11 +447,11 @@ const Home = () => {
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
-                    stroke-width="2"
+                    strokeWidth="2"
                   >
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                       d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                     />
                   </svg>
@@ -535,13 +586,15 @@ const Home = () => {
                 <h1 className="text-xl font-medium text-gray-700 ">
                   Contact form
                 </h1>
-
-                <form className="mt-4">
+                <form className="mt-4" onSubmit={submitForm}>
                   <div className="flex-1">
                     <label className="block mb-2 text-sm text-gray-600 ">
                       Full Name
                     </label>
                     <input
+                      onChange={(e) => { setName(e.target.value) }}
+                      id="name"
+                      name="name"
                       type="text"
                       placeholder="Your Sweet Name Please"
                       className="block w-full px-5 py-3 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
@@ -553,6 +606,9 @@ const Home = () => {
                       Email address
                     </label>
                     <input
+                      onChange={(e) => { setEmail(e.target.value) }}
+                      id="email"
+                      name="email"
                       type="email"
                       placeholder="Your Email Id Please"
                       className="block w-full px-5 py-3 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
@@ -563,16 +619,17 @@ const Home = () => {
                     <label className="block mb-2 text-sm text-gray-600 ">
                       Message
                     </label>
-                    <textarea
+                    <textarea onChange={(e) => { setMessage(e.target.value) }} id="message" name="message"
                       className="block w-full h-32 px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md md:h-48   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
                       placeholder="Message"
                     ></textarea>
                   </div>
 
-                  <button className="w-full px-6 py-3 mt-6 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-400 focus:ring-opacity-50">
+                  <button type="submit" className="w-full px-6 py-3 mt-6 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-400 focus:ring-opacity-50">
                     get in touch
                   </button>
                 </form>
+                <ToastContainer />
               </div>
             </div>
           </div>
