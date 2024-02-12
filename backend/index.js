@@ -19,6 +19,7 @@ const loginRouter = require("./routes/LoginRoute");
 const profileRouter = require("./routes/ProfileRoute");
 const forgottokenrouter = require("./routes/ForgotTokenRoute");
 const googleuserroute = require("./routes/GoogleUserRoute")
+const contactformroute = require("./routes/ContactFormRoute");
 
 const Product = require("./api/AddProduct");
 
@@ -63,6 +64,9 @@ app.use("/forgotpassword", forgottokenrouter);
 
 //for setting the password after regestration with google
 app.use("/setpassword", googleuserroute);
+
+//post the from data in databse and send email confirmation to user
+app.use("/contactform", contactformroute);
 
 //for adding the product to database
 app.post("/addproduct", async (req, res) => {
