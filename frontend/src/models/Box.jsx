@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import * as THREE from "three";
 import ThreeGlobe from "three-globe";
 import data from "./data/custom.geo.json";
