@@ -10,20 +10,9 @@ import Xylophone1 from "../models/Xylophone1";
 
 function ProductSection() {
   const [selectedSection, setSelectedSection] = useState("mens");
-  const [firstPos, setFirstPos] = useState([240.17, 2.19, 3]);
-  const [secondPos, setSecondPos] = useState([2.95, 50.66, 90.07]);
-  const [thirdPos, setThirdPos] = useState([-163.75, 90.34, 248.27]);
 
-  const handleSectionChange = (
-    section,
-    firstcamPos,
-    secondcamPos,
-    thirdcamPos
-  ) => {
+  const handleSectionChange = (section) => {
     setSelectedSection(section);
-    setFirstPos(firstcamPos);
-    setSecondPos(secondcamPos);
-    setThirdPos(thirdcamPos);
   };
 
   const isSelected = (section) => {
@@ -39,7 +28,7 @@ function ProductSection() {
               <Canvas
                 camera={{
                   fov: 75,
-                  position: firstPos,
+                  position: [240.17, 2.19, 3],
                   near: 0.1,
                   far: 25000,
                 }}
@@ -65,7 +54,7 @@ function ProductSection() {
               <Canvas
                 camera={{
                   fov: 75,
-                  position: secondPos,
+                  position: [2.95, 50.66, 90.07],
                   near: 0.1,
                   far: 25000,
                 }}
@@ -91,7 +80,7 @@ function ProductSection() {
               <Canvas
                 camera={{
                   fov: 75,
-                  position: thirdPos,
+                  position: [-163.75, 90.34, 248.27],
                   near: 0.1,
                   far: 25000,
                 }}
@@ -121,7 +110,7 @@ function ProductSection() {
               <Canvas
                 camera={{
                   fov: 75,
-                  position: firstPos,
+                  position: [-0.11, 2.9, 3.03],
                   near: 0.1,
                   far: 25000,
                 }}
@@ -147,7 +136,7 @@ function ProductSection() {
               <Canvas
                 camera={{
                   fov: 75,
-                  position: secondPos,
+                  position: [2.05, 4.08, 35.88],
                   near: 0.1,
                   far: 25000,
                 }}
@@ -173,7 +162,7 @@ function ProductSection() {
               <Canvas
                 camera={{
                   fov: 75,
-                  position: thirdPos,
+                  position: [0.01, 3.15, 0],
                   near: 0.1,
                   far: 25000,
                 }}
@@ -206,14 +195,7 @@ function ProductSection() {
       <div className="lg:mx-12">
         <div className="mt-4 space-y-4 lg:mt-8">
           <a
-            onClick={() =>
-              handleSectionChange(
-                "mens",
-                [240.17, 2.19, 3],
-                [2.95, 50.66, 90.07],
-                [-163.75, 90.34, 248.27]
-              )
-            }
+            onClick={() => handleSectionChange("mens")}
             className={`block ${
               isSelected("mens") ? "text-blue-500" : "text-gray-500"
             } hover:bg-blue-500 hover:text-white hover:rounded hover:px-2 hover:py-2`}
@@ -221,14 +203,7 @@ function ProductSection() {
             Mens
           </a>
           <a
-            onClick={() =>
-              handleSectionChange(
-                "kids",
-                [-0.11, 2.9, 3.03],
-                [2.05, 4.08, 35.88],
-                [0.01, 3.15, 0]
-              )
-            }
+            onClick={() => handleSectionChange("kids")}
             className={`block ${
               isSelected("kids") ? "text-blue-500" : "text-gray-500"
             } hover:bg-blue-500 hover:text-white hover:rounded hover:px-2 hover:py-2`}
