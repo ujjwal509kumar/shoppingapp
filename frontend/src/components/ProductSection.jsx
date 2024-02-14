@@ -3,7 +3,7 @@ import { Canvas } from "@react-three/fiber";
 import React, { Suspense, useState } from "react";
 import Menblazer1 from "../models/Menblazer1";
 import FormalPant1 from "../models/Formalpant1";
-import Denimshirt1 from "../models/Denimshirt1"
+import Cap1 from "../models/Cap1"
 
 function ProductSection() {
   const [selectedSection, setSelectedSection] = useState("mens");
@@ -34,8 +34,8 @@ function ProductSection() {
                 <directionalLight intensity={2} position={[10, 10, 10]} />
                 <OrbitControls
                   minDistance={8}
-                  maxDistance={15}
                   enablePan={false}
+                  enableZoom={false}
                 />
                 <Suspense fallback={null}>
                   <Center>
@@ -44,7 +44,7 @@ function ProductSection() {
                 </Suspense>
               </Canvas>
               <h2 className="mt-4 text-xl text-center font-semibold text-gray-800 capitalize ">
-                  Normal Shirt collections
+                Normal Shirt collections
               </h2>
               <p className="mt-2 text-lg text-center tracking-wider text-blue-500 uppercase  ">
                 500₹ - 1000₹
@@ -64,7 +64,7 @@ function ProductSection() {
                 <directionalLight intensity={2} position={[10, 10, 10]} />
                 <OrbitControls
                   minDistance={100}
-                  maxDistance={110}
+                  enableZoom={false}
                   enablePan={false}
                 />
                 <Suspense fallback={null}>
@@ -85,29 +85,28 @@ function ProductSection() {
               <Canvas
                 camera={{
                   fov: 75,
-                  position: [0, 0, 1524.36],
+                  position: [-163.75, 90.34, 248.27],
                   near: 0.1,
                   far: 25000,
                 }}
               >
                 <ambientLight intensity={1} />
-                <directionalLight intensity={2} position={[100, 100, 100]} />
+                <directionalLight intensity={2} position={[1, 50, 1]} />
                 <OrbitControls
-                   minDistance={1900}
-                   maxDistance={2000}
+                  enableZoom={false}
                   enablePan={false}
                 />
                 <Suspense fallback={null}>
                   <Center>
-                    <Denimshirt1 />
+                    <Cap1 />
                   </Center>
                 </Suspense>
               </Canvas>
               <h2 className="mt-4 text-xl text-center font-semibold text-gray-800 capitalize ">
-                Denim Shirt collections
+                Cap collections
               </h2>
               <p className="mt-2 text-lg text-center tracking-wider text-blue-500 uppercase  ">
-                1000₹ - 3500₹
+                500₹ - 1500₹
               </p>
             </div>
           </section>
