@@ -275,7 +275,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
       {/* FIFTH SECTION END */}
 
       {/* SIXTH SECTION START */}
