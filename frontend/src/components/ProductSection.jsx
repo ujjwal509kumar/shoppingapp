@@ -24,7 +24,6 @@ function ProductSection() {
     setFirstPos(firstcamPos);
     setSecondPos(secondcamPos);
     setThirdPos(thirdcamPos);
-    console.log(firstPos, secondPos, thirdPos);
   };
 
   const isSelected = (section) => {
@@ -47,7 +46,7 @@ function ProductSection() {
               >
                 <ambientLight intensity={1} />
                 <directionalLight intensity={2} position={[10, 10, 10]} />
-                <OrbitControls enablePan={false} />
+                <OrbitControls enablePan={false} enableZoom={false} />
                 <Suspense fallback={null}>
                   <Center>
                     <Menshirt1 />
