@@ -2,22 +2,21 @@ import RightArrow from "../components/RightArrow";
 import ProductSection from "../components/ProductSection";
 import PureCount from "../components/PureCount";
 import { Suspense, useState } from "react";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import { Canvas } from "@react-three/fiber";
 import { Center, OrbitControls } from "@react-three/drei";
-import Box from "../models/Box";
+import Globe from "../models/Globe";
 import FAQ from "../components/FAQ";
 import TestimonialCarousel from "../components/TestimonialCarousel";
 
 const Home = () => {
+  const [Name, setName] = useState("");
+  const [Email, setEmail] = useState("");
+  const [Message, setMessage] = useState("");
 
-  const [Name, setName] = useState('');
-  const [Email, setEmail] = useState('');
-  const [Message, setMessage] = useState('');
-
-  const submitForm = async(e) => {
+  const submitForm = async (e) => {
     e.preventDefault();
 
     const formUrl = import.meta.env.VITE_APP_URI_CONTACT_FORM;
@@ -41,7 +40,7 @@ const Home = () => {
           theme: "light",
         });
       } else if (response.status === 200) {
-        toast.error('Error sending message', {
+        toast.error("Error sending message", {
           position: "top-center",
           autoClose: 2500,
           hideProgressBar: false,
@@ -51,14 +50,13 @@ const Home = () => {
           progress: undefined,
           theme: "light",
         });
-      }
-      else {
+      } else {
         console.log(response.data);
       }
     } catch (error) {
       console.error(error);
     }
-  }
+  };
 
   return (
     <div>
@@ -74,7 +72,10 @@ const Home = () => {
               welcome to <span className="text-blue-400">Shop360</span> An
               In-House 360<sup>*</sup> Experience
             </h1>
-            <a href="login" className="w-full h-full px-5 py-2 my-10 text-sm font-medium text-white bg-blue-600 rounded-md lg:w-auto hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+            <a
+              href="login"
+              className="w-full h-full px-5 py-2 my-10 text-sm font-medium text-white bg-blue-600 rounded-md lg:w-auto hover:bg-blue-500 focus:outline-none focus:bg-blue-500"
+            >
               Start Free
             </a>
           </div>
@@ -98,12 +99,12 @@ const Home = () => {
               <directionalLight intensity={2} position={[10, 10, 10]} />
               <Suspense fallback={null}>
                 <Center>
-                  <Box />
+                  <Globe />
                 </Center>
               </Suspense>
               <OrbitControls
                 minDistance={200}
-                maxDistance={200}
+                enableZoom={false}
                 rotateSpeed={0.6}
                 enablePan={false}
               />
@@ -369,7 +370,10 @@ const Home = () => {
           </div>
           <center>
             <button className="bg-blue-500 rounded px-4 mt-5 py-5 text-white categoriescard">
-             <a href="login"> Get Started For Free <RightArrow /></a>
+              <a href="login">
+                {" "}
+                Get Started For Free <RightArrow />
+              </a>
             </button>
           </center>
         </div>
@@ -377,7 +381,7 @@ const Home = () => {
       {/* SEVENTH SECTION END */}
 
       {/* EIGTH SECTION START */}
-     <TestimonialCarousel />
+      <TestimonialCarousel />
       {/* EIGHTH SECTION END */}
 
       {/* NINTH SECTION START */}
@@ -591,7 +595,9 @@ const Home = () => {
                       Full Name
                     </label>
                     <input
-                      onChange={(e) => { setName(e.target.value) }}
+                      onChange={(e) => {
+                        setName(e.target.value);
+                      }}
                       id="name"
                       name="name"
                       type="text"
@@ -605,7 +611,9 @@ const Home = () => {
                       Email address
                     </label>
                     <input
-                      onChange={(e) => { setEmail(e.target.value) }}
+                      onChange={(e) => {
+                        setEmail(e.target.value);
+                      }}
                       id="email"
                       name="email"
                       type="email"
@@ -618,13 +626,21 @@ const Home = () => {
                     <label className="block mb-2 text-sm text-gray-600 ">
                       Message
                     </label>
-                    <textarea onChange={(e) => { setMessage(e.target.value) }} id="message" name="message"
+                    <textarea
+                      onChange={(e) => {
+                        setMessage(e.target.value);
+                      }}
+                      id="message"
+                      name="message"
                       className="block w-full h-32 px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md md:h-48   focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring"
                       placeholder="Message"
                     ></textarea>
                   </div>
 
-                  <button type="submit" className="w-full px-6 py-3 mt-6 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-400 focus:ring-opacity-50">
+                  <button
+                    type="submit"
+                    className="w-full px-6 py-3 mt-6 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-400 focus:ring-opacity-50"
+                  >
                     get in touch
                   </button>
                 </form>

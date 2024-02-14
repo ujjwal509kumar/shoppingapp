@@ -42,7 +42,7 @@ node_modules/
 .firebase/
 
 # public assets
-/public/
+# /public/
 
 # DSTYLE directory
 .DS_Store
@@ -102,7 +102,7 @@ storybook-static
 
 # Gatsby files
 .cache/
-public
+
 
 # Mac files
 .DS_Store
