@@ -5,7 +5,7 @@ export default function Xylophone1(props) {
   const { nodes, materials } = useGLTF('/xylophone1.gltf')
   return (
     <group {...props} dispose={null}>
-      <group scale={4.5}>
+      <group scale={1}>
         <group position={[-0.418, 0.019, 5.126]}>
           <mesh geometry={nodes.Frame_Frame1_0.geometry} material={materials.Frame1} />
           <mesh geometry={nodes.Nails_Nails1_0.geometry} material={materials.Nails1} />
