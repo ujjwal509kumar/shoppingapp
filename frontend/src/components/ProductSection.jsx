@@ -1,7 +1,7 @@
 import { Center, OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import React, { Suspense, useState } from "react";
-import Menblazer1 from "../models/Menblazer1";
+import Menshirt1 from "../models/Menshirt1";
 import FormalPant1 from "../models/Formalpant1";
 import Cap1 from "../models/Cap1";
 import Kidspant1 from "../models/Kidspant1";
@@ -9,10 +9,22 @@ import Watergun1 from "../models/Watergun1";
 import Xylophone1 from "../models/Xylophone1";
 
 function ProductSection() {
-  const [selectedSection, setSelectedSection] = useState("kids");
+  const [selectedSection, setSelectedSection] = useState("mens");
+  const [firstPos, setFirstPos] = useState([240.17, 2.19, 3]);
+  const [secondPos, setSecondPos] = useState([2.95, 50.66, 90.07]);
+  const [thirdPos, setThirdPos] = useState([-163.75, 90.34, 248.27]);
 
-  const handleSectionChange = (section) => {
+  const handleSectionChange = (
+    section,
+    firstcamPos,
+    secondcamPos,
+    thirdcamPos
+  ) => {
     setSelectedSection(section);
+    setFirstPos(firstcamPos);
+    setSecondPos(secondcamPos);
+    setThirdPos(thirdcamPos);
+    console.log(firstPos, secondPos, thirdPos);
   };
 
   const isSelected = (section) => {
@@ -28,20 +40,17 @@ function ProductSection() {
               <Canvas
                 camera={{
                   fov: 75,
-                  position: [6.27, 0.31, 0.88],
+                  position: firstPos,
                   near: 0.1,
                   far: 25000,
                 }}
               >
                 <ambientLight intensity={1} />
                 <directionalLight intensity={2} position={[10, 10, 10]} />
-                <OrbitControls
-                  enablePan={false}
-                  enableZoom={false}
-                />
+                <OrbitControls enablePan={false} />
                 <Suspense fallback={null}>
                   <Center>
-                    <Menblazer1 />
+                    <Menshirt1 />
                   </Center>
                 </Suspense>
               </Canvas>
@@ -57,17 +66,14 @@ function ProductSection() {
               <Canvas
                 camera={{
                   fov: 75,
-                  position: [2.95, 50.66, 90.07],
+                  position: secondPos,
                   near: 0.1,
                   far: 25000,
                 }}
               >
                 <ambientLight intensity={1} />
                 <directionalLight intensity={2} position={[10, 10, 10]} />
-                <OrbitControls
-                  enableZoom={false}
-                  enablePan={false}
-                />
+                <OrbitControls enableZoom={false} enablePan={false} />
                 <Suspense fallback={null}>
                   <Center>
                     <FormalPant1 scale={0.9} />
@@ -86,17 +92,14 @@ function ProductSection() {
               <Canvas
                 camera={{
                   fov: 75,
-                  position: [-163.75, 90.34, 248.27],
+                  position: thirdPos,
                   near: 0.1,
                   far: 25000,
                 }}
               >
                 <ambientLight intensity={1} />
                 <directionalLight intensity={2} position={[1, 50, 1]} />
-                <OrbitControls
-                  enableZoom={false}
-                  enablePan={false}
-                />
+                <OrbitControls enableZoom={false} enablePan={false} />
                 <Suspense fallback={null}>
                   <Center>
                     <Cap1 />
@@ -119,17 +122,14 @@ function ProductSection() {
               <Canvas
                 camera={{
                   fov: 75,
-                  position: [-0.11, 2.9, 3.03],
+                  position: firstPos,
                   near: 0.1,
                   far: 25000,
                 }}
               >
                 <ambientLight intensity={1} />
                 <directionalLight intensity={2} position={[10, 10, 10]} />
-                <OrbitControls
-                  enablePan={false}
-                  enableZoom={false}
-                />
+                <OrbitControls enablePan={false} enableZoom={false} />
                 <Suspense fallback={null}>
                   <Center>
                     <Xylophone1 />
@@ -148,17 +148,14 @@ function ProductSection() {
               <Canvas
                 camera={{
                   fov: 75,
-                  position: [2.05, 4.08, 35.88],
+                  position: secondPos,
                   near: 0.1,
                   far: 25000,
                 }}
               >
                 <ambientLight intensity={1} />
                 <directionalLight intensity={2} position={[10, 10, 10]} />
-                <OrbitControls
-                  enableZoom={false}
-                  enablePan={false}
-                />
+                <OrbitControls enableZoom={false} enablePan={false} />
                 <Suspense fallback={null}>
                   <Center>
                     <Kidspant1 />
@@ -177,205 +174,14 @@ function ProductSection() {
               <Canvas
                 camera={{
                   fov: 75,
-                  position: [0.01, 3.15, 0],
+                  position: thirdPos,
                   near: 0.1,
                   far: 25000,
                 }}
               >
                 <ambientLight intensity={1} />
                 <directionalLight intensity={2} position={[1, 50, 1]} />
-                <OrbitControls
-                  enableZoom={false}
-                  enablePan={false}
-                />
-                <Suspense fallback={null}>
-                  <Center>
-                    <Watergun1 />
-                  </Center>
-                </Suspense>
-              </Canvas>
-              <h2 className="mt-4 text-xl text-center font-semibold text-gray-800 capitalize ">
-                WaterGun collections
-              </h2>
-              <p className="mt-2 text-lg text-center tracking-wider text-blue-500 uppercase  ">
-                500₹ - 1500₹
-              </p>
-            </div>
-          </section>
-        );
-      case "womens":
-        return (
-          <section className="flex justify-between ml-14 gap-4">
-            <div className="w-[20vw] h-[55vh]">
-              <Canvas
-                camera={{
-                  fov: 75,
-                  position: [-0.11, 2.9, 3.03],
-                  near: 0.1,
-                  far: 25000,
-                }}
-              >
-                <ambientLight intensity={1} />
-                <directionalLight intensity={2} position={[10, 10, 10]} />
-                <OrbitControls
-                  minDistance={18}
-                  enablePan={false}
-                  enableZoom={false}
-                />
-                <Suspense fallback={null}>
-                  <Center>
-                    <Xylophone1 />
-                  </Center>
-                </Suspense>
-              </Canvas>
-              <h2 className="mt-4 text-xl text-center font-semibold text-gray-800 capitalize ">
-                Xylophone collections
-              </h2>
-              <p className="mt-2 text-lg text-center tracking-wider text-blue-500 uppercase  ">
-                500₹ - 1000₹
-              </p>
-            </div>
-            {/* second */}
-            <div className="w-[20vw] h-[55vh]">
-              <Canvas
-                camera={{
-                  fov: 75,
-                  position: [2.05, 4.08, 35.88],
-                  near: 0.1,
-                  far: 25000,
-                }}
-              >
-                <ambientLight intensity={1} />
-                <directionalLight intensity={2} position={[10, 10, 10]} />
-                <OrbitControls
-                  minDistance={10}
-                  enableZoom={false}
-                  enablePan={false}
-                />
-                <Suspense fallback={null}>
-                  <Center>
-                    <Kidspant1 />
-                  </Center>
-                </Suspense>
-              </Canvas>
-              <h2 className="mt-4 text-xl text-center font-semibold text-gray-800 capitalize ">
-                Kids Pant collections
-              </h2>
-              <p className="mt-2 text-lg text-center tracking-wider text-blue-500 uppercase  ">
-                500₹ - 2000₹
-              </p>
-            </div>
-            {/* third */}
-            <div className="w-[20vw] h-[55vh]">
-              <Canvas
-                camera={{
-                  fov: 75,
-                  position: [0.01, 2.15, 0],
-                  near: 0.1,
-                  far: 25000,
-                }}
-              >
-                <ambientLight intensity={1} />
-                <directionalLight intensity={2} position={[1, 50, 1]} />
-                <OrbitControls
-                  minDistance={4}
-                  enableZoom={false}
-                  enablePan={false}
-                />
-                <Suspense fallback={null}>
-                  <Center>
-                    <Watergun1 />
-                  </Center>
-                </Suspense>
-              </Canvas>
-              <h2 className="mt-4 text-xl text-center font-semibold text-gray-800 capitalize ">
-                WaterGun collections
-              </h2>
-              <p className="mt-2 text-lg text-center tracking-wider text-blue-500 uppercase  ">
-                500₹ - 1500₹
-              </p>
-            </div>
-          </section>
-        );
-      case "pets":
-        return (
-          <section className="flex justify-between ml-14 gap-4">
-            <div className="w-[20vw] h-[55vh]">
-              <Canvas
-                camera={{
-                  fov: 75,
-                  position: [-0.11, 2.9, 3.03],
-                  near: 0.1,
-                  far: 25000,
-                }}
-              >
-                <ambientLight intensity={1} />
-                <directionalLight intensity={2} position={[10, 10, 10]} />
-                <OrbitControls
-                  minDistance={18}
-                  enablePan={false}
-                  enableZoom={false}
-                />
-                <Suspense fallback={null}>
-                  <Center>
-                    <Xylophone1 />
-                  </Center>
-                </Suspense>
-              </Canvas>
-              <h2 className="mt-4 text-xl text-center font-semibold text-gray-800 capitalize ">
-                Xylophone collections
-              </h2>
-              <p className="mt-2 text-lg text-center tracking-wider text-blue-500 uppercase  ">
-                500₹ - 1000₹
-              </p>
-            </div>
-            {/* second */}
-            <div className="w-[20vw] h-[55vh]">
-              <Canvas
-                camera={{
-                  fov: 75,
-                  position: [2.05, 4.08, 35.88],
-                  near: 0.1,
-                  far: 25000,
-                }}
-              >
-                <ambientLight intensity={1} />
-                <directionalLight intensity={2} position={[10, 10, 10]} />
-                <OrbitControls
-                  minDistance={10}
-                  enableZoom={false}
-                  enablePan={false}
-                />
-                <Suspense fallback={null}>
-                  <Center>
-                    <Kidspant1 />
-                  </Center>
-                </Suspense>
-              </Canvas>
-              <h2 className="mt-4 text-xl text-center font-semibold text-gray-800 capitalize ">
-                Kids Pant collections
-              </h2>
-              <p className="mt-2 text-lg text-center tracking-wider text-blue-500 uppercase  ">
-                500₹ - 2000₹
-              </p>
-            </div>
-            {/* third */}
-            <div className="w-[20vw] h-[55vh]">
-              <Canvas
-                camera={{
-                  fov: 75,
-                  position: [0.01, 2.15, 0],
-                  near: 0.1,
-                  far: 25000,
-                }}
-              >
-                <ambientLight intensity={1} />
-                <directionalLight intensity={2} position={[1, 50, 1]} />
-                <OrbitControls
-                  minDistance={4}
-                  enableZoom={false}
-                  enablePan={false}
-                />
+                <OrbitControls enableZoom={false} enablePan={false} />
                 <Suspense fallback={null}>
                   <Center>
                     <Watergun1 />
@@ -401,7 +207,14 @@ function ProductSection() {
       <div className="lg:mx-12">
         <div className="mt-4 space-y-4 lg:mt-8">
           <a
-            onClick={() => handleSectionChange("mens")}
+            onClick={() =>
+              handleSectionChange(
+                "mens",
+                [240.17, 2.19, 3],
+                [2.95, 50.66, 90.07],
+                [-163.75, 90.34, 248.27]
+              )
+            }
             className={`block ${
               isSelected("mens") ? "text-blue-500" : "text-gray-500"
             } hover:bg-blue-500 hover:text-white hover:rounded hover:px-2 hover:py-2`}
@@ -409,7 +222,14 @@ function ProductSection() {
             Mens
           </a>
           <a
-            onClick={() => handleSectionChange("kids")}
+            onClick={() =>
+              handleSectionChange(
+                "kids",
+                [-0.11, 2.9, 3.03],
+                [2.05, 4.08, 35.88],
+                [0.01, 3.15, 0]
+              )
+            }
             className={`block ${
               isSelected("kids") ? "text-blue-500" : "text-gray-500"
             } hover:bg-blue-500 hover:text-white hover:rounded hover:px-2 hover:py-2`}

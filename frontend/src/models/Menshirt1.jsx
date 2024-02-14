@@ -1,11 +1,11 @@
 import React from "react";
 import { useGLTF } from "@react-three/drei";
 
-export default function Menblazer1(props) {
-  const { nodes, materials } = useGLTF("/menblazer1.gltf");
+export default function Menshirt1(props) {
+  const { nodes, materials } = useGLTF("/menshirt1.gltf");
   return (
     <group {...props} dispose={null}>
-      <group rotation={[Math.PI / 2, 0, 0]} scale={0.01}>
+      <group rotation={[Math.PI / 2, 0, 0]} scale={0.3}>
         <mesh
           geometry={nodes.Object_4.geometry}
           material={materials.Collar_FRONT_2889}
@@ -63,4 +63,4 @@ export default function Menblazer1(props) {
   );
 }
 
-useGLTF.preload("/menblazer1.gltf");
+useGLTF.preload("/menshirt1.gltf");

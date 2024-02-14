@@ -272,7 +272,7 @@ const Home = () => {
           </h1>
 
           <div className="mt-8 xl:mt-16 lg:flex lg:-mx-18">
-            <ProductSection></ProductSection>
+            <ProductSection />
           </div>
         </div>
       </section>
