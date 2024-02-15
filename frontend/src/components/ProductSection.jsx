@@ -1,6 +1,6 @@
 import { Center, OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import React, { Suspense, useState } from "react";
+import React, { Suspense, useRef, useState } from "react";
 import Menshirt1 from "../models/Menshirt1";
 import FormalPant1 from "../models/Formalpant1";
 import Cap1 from "../models/Cap1";
@@ -15,6 +15,17 @@ import Dogbone1 from "../models/Dogbone1";
 
 function ProductSection() {
   const [selectedSection, setSelectedSection] = useState("mens");
+  const menshirt1 = useRef(null);
+  const formalpant1 = useRef(null);
+  const cap1 = useRef(null);
+  const kidspant1 = useRef(null);
+  const watergun1 = useRef(null);
+  const xylophone1 = useRef(null);
+  const sweater1 = useRef(null);
+  const slippers1 = useRef(null);
+  const lipstick1 = useRef(null);
+  const dogtoy1 = useRef(null);
+  const dogbone1 = useRef(null);
 
   const handleSectionChange = (section) => {
     setSelectedSection(section);
@@ -40,10 +51,17 @@ function ProductSection() {
                   near: 0.1,
                   far: 25000,
                 }}
+                onPointerEnter={() => (menshirt1.current.autoRotate = true)}
+                onPointerLeave={() => (menshirt1.current.autoRotate = false)}
               >
                 <ambientLight intensity={1} />
-                <directionalLight intensity={2} position={[10, 10, 10]} />
-                <OrbitControls enablePan={false} enableZoom={false} />
+                <directionalLight intensity={2} position={[1, 10, 1]} />
+                <OrbitControls
+                  ref={menshirt1}
+                  enablePan={false}
+                  enableZoom={false}
+                  autoRotateSpeed={10}
+                />
                 <Suspense fallback={null}>
                   <Center>
                     <Menshirt1 />
@@ -66,10 +84,17 @@ function ProductSection() {
                   near: 0.1,
                   far: 25000,
                 }}
+                onPointerEnter={() => (formalpant1.current.autoRotate = true)}
+                onPointerLeave={() => (formalpant1.current.autoRotate = false)}
               >
                 <ambientLight intensity={1} />
                 <directionalLight intensity={2} position={[10, 10, 10]} />
-                <OrbitControls enableZoom={false} enablePan={false} />
+                <OrbitControls
+                  ref={formalpant1}
+                  enableZoom={false}
+                  enablePan={false}
+                  autoRotateSpeed={10}
+                />
                 <Suspense fallback={null}>
                   <Center>
                     <FormalPant1 scale={0.9} />
@@ -92,10 +117,17 @@ function ProductSection() {
                   near: 0.1,
                   far: 25000,
                 }}
+                onPointerEnter={() => (cap1.current.autoRotate = true)}
+                onPointerLeave={() => (cap1.current.autoRotate = false)}
               >
                 <ambientLight intensity={1} />
                 <directionalLight intensity={2} position={[1, 50, 1]} />
-                <OrbitControls enableZoom={false} enablePan={false} />
+                <OrbitControls
+                  ref={cap1}
+                  enableZoom={false}
+                  enablePan={false}
+                  autoRotateSpeed={10}
+                />
                 <Suspense fallback={null}>
                   <Center>
                     <Cap1 />
@@ -125,10 +157,17 @@ function ProductSection() {
                   near: 0.1,
                   far: 25000,
                 }}
+                onPointerEnter={() => (xylophone1.current.autoRotate = true)}
+                onPointerLeave={() => (xylophone1.current.autoRotate = false)}
               >
                 <ambientLight intensity={1} />
                 <directionalLight intensity={2} position={[10, 10, 10]} />
-                <OrbitControls enablePan={false} enableZoom={false} />
+                <OrbitControls
+                  ref={xylophone1}
+                  enablePan={false}
+                  enableZoom={false}
+                  autoRotateSpeed={10}
+                />
                 <Suspense fallback={null}>
                   <Center>
                     <Xylophone1 />
@@ -151,10 +190,17 @@ function ProductSection() {
                   near: 0.1,
                   far: 25000,
                 }}
+                onPointerEnter={() => (kidspant1.current.autoRotate = true)}
+                onPointerLeave={() => (kidspant1.current.autoRotate = false)}
               >
                 <ambientLight intensity={1} />
                 <directionalLight intensity={2} position={[10, 10, 10]} />
-                <OrbitControls enableZoom={false} enablePan={false} />
+                <OrbitControls
+                  ref={kidspant1}
+                  enableZoom={false}
+                  enablePan={false}
+                  autoRotateSpeed={10}
+                />
                 <Suspense fallback={null}>
                   <Center>
                     <Kidspant1 />
@@ -177,10 +223,17 @@ function ProductSection() {
                   near: 0.1,
                   far: 25000,
                 }}
+                onPointerEnter={() => (watergun1.current.autoRotate = true)}
+                onPointerLeave={() => (watergun1.current.autoRotate = false)}
               >
                 <ambientLight intensity={1} />
                 <directionalLight intensity={2} position={[1, 50, 1]} />
-                <OrbitControls enableZoom={false} enablePan={false} />
+                <OrbitControls
+                  ref={watergun1}
+                  enableZoom={false}
+                  enablePan={false}
+                  autoRotateSpeed={10}
+                />
                 <Suspense fallback={null}>
                   <Center>
                     <Watergun1 />
@@ -210,10 +263,17 @@ function ProductSection() {
                   near: 0.1,
                   far: 25000,
                 }}
+                onPointerEnter={() => (sweater1.current.autoRotate = true)}
+                onPointerLeave={() => (sweater1.current.autoRotate = false)}
               >
                 <ambientLight intensity={1} />
                 <directionalLight intensity={2} position={[10, 1000, 10]} />
-                <OrbitControls enablePan={false} enableZoom={false} />
+                <OrbitControls
+                  ref={sweater1}
+                  enablePan={false}
+                  enableZoom={false}
+                  autoRotateSpeed={10}
+                />
                 <Suspense fallback={null}>
                   <Center>
                     <Sweater1 />
@@ -236,10 +296,17 @@ function ProductSection() {
                   near: 0.1,
                   far: 25000,
                 }}
+                onPointerEnter={() => (lipstick1.current.autoRotate = true)}
+                onPointerLeave={() => (lipstick1.current.autoRotate = false)}
               >
                 <ambientLight intensity={1} />
                 <directionalLight intensity={2} position={[10, 10, 10]} />
-                <OrbitControls enableZoom={false} enablePan={false} />
+                <OrbitControls
+                  ref={lipstick1}
+                  enableZoom={false}
+                  enablePan={false}
+                  autoRotateSpeed={10}
+                />
                 <Suspense fallback={null}>
                   <Center>
                     <Lipstick1 />
@@ -262,10 +329,17 @@ function ProductSection() {
                   near: 0.1,
                   far: 25000,
                 }}
+                onPointerEnter={() => (slippers1.current.autoRotate = true)}
+                onPointerLeave={() => (slippers1.current.autoRotate = false)}
               >
                 <ambientLight intensity={1} />
-                <directionalLight intensity={2} position={[1, 50, 1]} />
-                <OrbitControls enableZoom={false} enablePan={false} />
+                <directionalLight intensity={2} position={[1, 1, 1]} />
+                <OrbitControls
+                  ref={slippers1}
+                  enableZoom={false}
+                  enablePan={false}
+                  autoRotateSpeed={10}
+                />
                 <Suspense fallback={null}>
                   <Center>
                     <Slippers1 />
@@ -295,10 +369,17 @@ function ProductSection() {
                   near: 0.1,
                   far: 25000,
                 }}
+                onPointerEnter={() => (dogbone1.current.autoRotate = true)}
+                onPointerLeave={() => (dogbone1.current.autoRotate = false)}
               >
                 <ambientLight intensity={1} />
                 <directionalLight intensity={2} position={[10, 10, 10]} />
-                <OrbitControls enablePan={false} enableZoom={false} />
+                <OrbitControls
+                  ref={dogbone1}
+                  enablePan={false}
+                  enableZoom={false}
+                  autoRotateSpeed={10}
+                />
                 <Suspense fallback={null}>
                   <Center>
                     <Dogbone1 />
@@ -306,7 +387,7 @@ function ProductSection() {
                 </Suspense>
               </Canvas>
               <h2 className="mt-4 text-xl text-center font-semibold text-gray-800 capitalize ">
-               Dog bone collections
+                Dog bone collections
               </h2>
               <p className="mt-2 text-lg text-center tracking-wider text-blue-500 uppercase  ">
                 50₹ - 150₹
@@ -321,10 +402,17 @@ function ProductSection() {
                   near: 0.1,
                   far: 25000,
                 }}
+                onPointerEnter={() => (dogtoy1.current.autoRotate = true)}
+                onPointerLeave={() => (dogtoy1.current.autoRotate = false)}
               >
                 <ambientLight intensity={1} />
                 <directionalLight intensity={2} position={[10, 10, 10]} />
-                <OrbitControls enableZoom={false} enablePan={false} />
+                <OrbitControls
+                  ref={dogtoy1}
+                  enableZoom={false}
+                  enablePan={false}
+                  autoRotateSpeed={10}
+                />
                 <Suspense fallback={null}>
                   <Center>
                     <Dogtoy1 />

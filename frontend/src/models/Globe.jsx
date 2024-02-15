@@ -3,14 +3,9 @@ import * as THREE from "three";
 import ThreeGlobe from "three-globe";
 import data from "./data/custom.geo.json";
 import lines from "./data/lines.json";
-import { useFrame } from "@react-three/fiber";
 
 const Globe = () => {
   const globeRef = useRef();
-
-  useFrame(() => {
-    globeRef.current.rotation.y += 0.002;
-  });
 
   useEffect(() => {
     if (!globeRef.current) return;
