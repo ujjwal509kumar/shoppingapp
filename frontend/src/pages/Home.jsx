@@ -88,6 +88,7 @@ const Home = () => {
         <div className="items-center lg:flex">
           <div className="flex items-center justify-center w-full h-96 mt-6 lg:mt-0 lg:w-1/2">
             <Canvas
+              key={"globe"}
               camera={{
                 fov: 75,
                 position: [164.04, 62.01, 35.59],
@@ -103,7 +104,8 @@ const Home = () => {
                 </Center>
               </Suspense>
               <OrbitControls
-                minDistance={200}
+                autoRotate={true}
+                autoRotateSpeed={2}
                 enableZoom={false}
                 rotateSpeed={0.6}
                 enablePan={false}
@@ -272,7 +274,7 @@ const Home = () => {
           </h1>
 
           <div className="mt-8 xl:mt-16 lg:flex lg:-mx-18">
-            <ProductSection></ProductSection>
+            <ProductSection />
           </div>
         </div>
       </section>
