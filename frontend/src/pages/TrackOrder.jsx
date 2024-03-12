@@ -34,7 +34,7 @@ return (
 
 
   
-<div className="py-14 px-4 md:px-6 2xl:px-20 2xl:container 2xl:mx-auto bg-blue-100 rounded-lg">
+<div className="py-14 px-4 md:px-6 2xl:px-20 2xl:container 2xl:mx-auto bg-blue-100 rounded-lg" hidden>
   <div className="flex justify-start item-start space-y-2 flex-col">
     <h1 className="text-3xl lg:text-4xl font-semibold leading-7 lg:leading-9 text-gray-800">Order #123456</h1>
     <p className="text-base font-medium leading-6 text-gray-600">21st Mart 2021 at 10:34 PM</p>
@@ -159,8 +159,8 @@ return (
             </div>
           </div>
           <div className="flex flex-col justify-center items-center">
-           <a href="/TrackOrder"><button className="mt-6 md:mt-0 dark:border-white dark:hover:bg-gray-900 dark:bg-transparent dark:text-white py-5 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 border border-gray-800 font-medium w-96 2xl:w-full text-base font-medium leading-4 text-gray-800">Check Another</button></a>
-            <button className="mt-6 md:mt-0 dark:border-white dark:hover:bg-gray-900 dark:bg-transparent dark:text-white py-5 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 border border-gray-800 font-medium w-96 2xl:w-full text-base font-medium leading-4 text-gray-800">Edit Details</button>
+           <a href="/TrackOrder"><button className="mt-6 md:mt-0 mb-4 rounded dark:border-white dark:hover:bg-gray-900 dark:bg-transparent dark:text-white py-5 px-10 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 border border-gray-800 font-medium text-base font-medium leading-4 text-gray-800">Check Another</button></a>
+            <button className="mt-6 md:mt-0 dark:border-white rounded dark:hover:bg-gray-900 dark:bg-transparent dark:text-white py-5 px-10 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 border border-gray-800 font-medium text-base font-medium leading-4 text-gray-800">Need Help ?</button>
           </div>
         </div>
       </div>
