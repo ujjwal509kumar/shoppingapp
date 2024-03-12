@@ -15,6 +15,7 @@ import Product from './pages/Product';
 import Checkout from './pages/Checkout';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import TrackOrder from './pages/TrackOrder';
 
 
 // Private Route
@@ -80,7 +81,10 @@ const router = createBrowserRouter([
     path: '*',
     element: <PageNotFound></PageNotFound>
   },
-
+  {
+    path: '/TrackOrder',
+    element: <TrackOrder></TrackOrder>
+  },
 ]);
 
 
