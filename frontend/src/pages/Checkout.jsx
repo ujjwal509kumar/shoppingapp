@@ -23,23 +23,25 @@ const Checkout = () => {
   <div className="px-4 pt-8">
     <p className="text-xl font-medium">Order Summary</p>
     <p className="text-gray-400">Check your items. And select a suitable shipping method.</p>
-    <div className="mt-8 space-y-3 rounded-lg border bg-white px-2 py-4 sm:px-6">
-      <div className="flex flex-col rounded-lg bg-white sm:flex-row">
-        <img className="m-2 h-24 w-28 rounded-md border object-cover object-center" src="https://images.unsplash.com/flagged/photo-1556637640-2c80d3201be8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c25lYWtlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" alt="" />
-        <div className="flex w-full flex-col px-4 py-4">
-          <span className="font-semibold">Nike Air Max Pro 8888 - Super Light</span>
-          <span className="float-right text-gray-400">42EU - 8.5US</span>
-          <p className="text-lg font-bold">$138.99</p>
-        </div>
-      </div>
-      <div className="flex flex-col rounded-lg bg-white sm:flex-row">
-        <img className="m-2 h-24 w-28 rounded-md border object-cover object-center" src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8c25lYWtlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" alt="" />
-        <div className="flex w-full flex-col px-4 py-4">
-          <span className="font-semibold">Nike Air Max Pro 8888 - Super Light</span>
-          <span className="float-right text-gray-400">42EU - 8.5US</span>
-          <p className="mt-auto text-lg font-bold">$238.99</p>
-        </div>
-      </div>
+    <div className="sideCart rounded-lg mt-8 space-y-3 rounded-lg border bg-white px-2 py-4 sm:px-6">
+    <ol className='list-decimal font-semibold'>
+                            {Object.keys(cart).length === 0 && <div className='my-4 font-normal'>No Items in the cart</div>}
+                            {Object.keys(cart).map((k) => (
+                                <li key={k}>
+                                    <div className="flex flex-col rounded-lg bg-white sm:flex-row">
+                                    <img className="m-2 h-24 w-28 rounded-md border object-cover object-center" src="https://images.unsplash.com/flagged/photo-1556637640-2c80d3201be8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c25lYWtlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" alt="" />
+                                    <div className="flex w-full flex-row px-4 py-4">
+                                      <span className="font-semibold">{cart[k].name}({cart[k].size}/{cart[k].variant})</span> 
+                                      <div className='flex mx-4 text-lg'>
+                                            <CiCircleMinus onClick={() => removeFromCart(k, 1)} className='cursor-pointer text-black' />
+                                            <span className='mx-2 text-sm'>{cart[k].qty}</span>
+                                            <CiCirclePlus onClick={() => addToCart(k, 1, cart[k].price, cart[k].name, cart[k].size, cart[k].variant)} className='cursor-pointer text-black' />
+                                        </div>
+                                    </div>
+                                  </div>
+                                </li>
+                            ))}
+      </ol>
     </div>
 
     <p className="mt-8 text-lg font-medium">Shipping Methods</p>
@@ -48,10 +50,10 @@ const Checkout = () => {
         <input className="peer hidden" id="radio_1" type="radio" name="radio" checked />
         <span className="peer-checked:border-gray-700 absolute right-4 top-1/2 box-content block h-3 w-3 -translate-y-1/2 rounded-full border-8 border-gray-300 bg-white"></span>
         <label className="peer-checked:border-2 peer-checked:border-gray-700 peer-checked:bg-gray-50 flex cursor-pointer select-none rounded-lg border border-gray-300 p-4" for="radio_1">
-          <img className="w-14 object-contain" src="/images/naorrAeygcJzX0SyNI4Y0.png" alt="" />
+          <img className="w-14 object-contain" src="../src/assets/standard-shipping.svg" alt="" />
           <div className="ml-5">
-            <span className="mt-2 font-semibold">Fedex Delivery</span>
-            <p className="text-slate-500 text-sm leading-6">Delivery: 2-4 Days</p>
+            <span className="mt-2 font-semibold">Standard Delivery</span>
+            <p className="text-slate-500 text-sm leading-6">Delivery: 3-5 Days</p>
           </div>
         </label>
       </div>
@@ -59,13 +61,20 @@ const Checkout = () => {
         <input className="peer hidden" id="radio_2" type="radio" name="radio" checked />
         <span className="peer-checked:border-gray-700 absolute right-4 top-1/2 box-content block h-3 w-3 -translate-y-1/2 rounded-full border-8 border-gray-300 bg-white"></span>
         <label className="peer-checked:border-2 peer-checked:border-gray-700 peer-checked:bg-gray-50 flex cursor-pointer select-none rounded-lg border border-gray-300 p-4" for="radio_2">
-          <img className="w-14 object-contain" src="/images/oG8xsl3xsOkwkMsrLGKM4.png" alt="" />
+          <img className="w-14 object-contain" src="../src/assets/express-shipping.svg" alt="" />
           <div className="ml-5">
-            <span className="mt-2 font-semibold">Fedex Delivery</span>
-            <p className="text-slate-500 text-sm leading-6">Delivery: 2-4 Days</p>
+            <span className="mt-2 font-semibold">Speed Delivery</span>
+            <p className="text-slate-500 text-sm leading-6">Delivery: 2-3 Days</p>
           </div>
         </label>
       </div>
+
+      <p className="mt-8 text-lg font-medium">Additional Delivery Notes</p>
+      <div className="relative">
+      <label for="additional-notes" className="mt-4 mb-2 block text-sm font-medium">Anything Else To Let Us Know Regarding This Order?</label>
+      <textarea type="text" id="additional-notes" name="additional-notes" maxLength="1000" placeholder="Ex. Is This Order An Gift? Do We Need To Pack It For You? Now Worries...Got It Covered At Free Of Cost.." className="w-full overflow-hidden h-96 rounded-md border border-gray-200 px-4 py-3 text-xlg shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"/>
+      </div>
+      <p className="text-lg p-4 rounded-lg bg-blue-200 capitalize"><span className="font-semibold">NOTE:&nbsp;</span>It is not necessary that we shall follow all the delivery notes.however we shall try our best to ensure we get your notes considerd.</p>
     </form>
   </div>
   <div className="mt-10 bg-gray-50 px-4 pt-8 lg:mt-0">
@@ -152,79 +161,34 @@ const Checkout = () => {
         </div>
       </div>
 
-      <hr class="border-t border-gray-300 my-12"></hr>
+      <hr class="border-t border-gray-300 my-12 opacity-0"></hr>
 
 
-      <p className="text-xl text-bold mb-4">Payment Information</p>
-
-      <div class="flex flex-row gap-2">
-      <div className="relative flex-grow">
-        <input className="peer hidden" id="card" type="radio" name="radio"/>
-        <span className="peer-checked:border-gray-700 absolute right-4 top-1/2 box-content block h-3 w-3 -translate-y-1/2 rounded-full border-8 border-gray-300 bg-white"></span>
-        <label className="peer-checked:border-2 peer-checked:border-gray-700 peer-checked:bg-gray-50 flex cursor-pointer select-none rounded-lg border border-gray-300 p-4" for="card">
-          <img className="w-14 object-contain" src="/images/naorrAeygcJzX0SyNI4Y0.png" alt="" />
-          <div>
-            <span className="mt-2 font-semibold">Card</span>
-          </div>
-        </label>
-      </div>
-      <div className="relative  flex-grow">
-        <input className="peer hidden" id="wallet" type="radio" name="radio"/>
-        <span className="peer-checked:border-gray-700 absolute right-4 top-1/2 box-content block h-3 w-3 -translate-y-1/2 rounded-full border-8 border-gray-300 bg-white"></span>
-        <label className="peer-checked:border-2 peer-checked:border-gray-700 peer-checked:bg-gray-50 flex cursor-pointer select-none rounded-lg border border-gray-300 p-4" for="wallet">
-          <img className="w-14 object-contain" src="/images/oG8xsl3xsOkwkMsrLGKM4.png" alt="" />
-          <div>
-            <span className="mt-2 font-semibold">Wallet</span>
-          </div>
-        </label>
-      </div>
-      <div className="relative  flex-grow">
-        <input className="peer hidden" id="upi" type="radio" name="radio"/>
-        <span className="peer-checked:border-gray-700 absolute right-4 top-1/2 box-content block h-3 w-3 -translate-y-1/2 rounded-full border-8 border-gray-300 bg-white"></span>
-        <label className="peer-checked:border-2 peer-checked:border-gray-700 peer-checked:bg-gray-50 flex cursor-pointer select-none rounded-lg border border-gray-300 p-4" for="upi">
-          <img className="w-14 object-contain" src="/images/oG8xsl3xsOkwkMsrLGKM4.png" alt="" />
-          <div>
-            <span className="mt-2 font-semibold">UPI</span>
-          </div>
-        </label>
-      </div>
-      <div className="relative  flex-grow">
-        <input className="peer hidden" id="cod" type="radio" name="radio"/>
-        <span className="peer-checked:border-gray-700 absolute right-4 top-1/2 box-content block h-3 w-3 -translate-y-1/2 rounded-full border-8 border-gray-300 bg-white"></span>
-        <label className="peer-checked:border-2 peer-checked:border-gray-700 peer-checked:bg-gray-50 flex cursor-pointer select-none rounded-lg border border-gray-300 p-4" for="cod">
-          <img className="w-14 object-contain" src="/images/oG8xsl3xsOkwkMsrLGKM4.png" alt="" />
-          <div>
-            <span className="mt-2 font-semibold">COD</span>
-          </div>
-        </label>
-      </div>
-        </div>
-
-        {/* http://localhost:5173/checkout
-        https://tailwindui.com/components/ecommerce/components/shopping-carts
-        https://tailwindui.com/components/ecommerce/components/checkout-forms
-        https://merakiui.com/components/application-ui/dropdowns */}
-
-
+      <p className="text-xl text-bold mb-4">Billing Information</p>
       <div className="mt-6 border-t border-b py-2">
-        <div className="flex items-center justify-between">
-          <p className="text-sm font-medium text-gray-900">Subtotal</p>
-          <p className="font-semibold text-gray-900">$399.00</p>
+        <div className="flex items-center justify-between my-8">
+          <p className="text-lg font-large text-gray-900">Subtotal</p>
+          <p className="font-semibold text-gray-900">₹{subTotal}</p>
         </div>
-        <div className="flex items-center justify-between">
-          <p className="text-sm font-medium text-gray-900">Shipping</p>
-          <p className="font-semibold text-gray-900">$8.00</p>
+        <div className="flex items-center justify-between my-8">
+          <p className="text-lg font-large text-gray-900">Shipping</p>
+          <p className="font-semibold text-gray-900">₹8.00</p>
         </div>
       </div>
       <div className="mt-6 flex items-center justify-between">
-        <p className="text-sm font-medium text-gray-900">Total</p>
-        <p className="text-2xl font-semibold text-gray-900">$408.00</p>
+        <p className="text-lg font-large text-gray-900 my-8">Total</p>
+        <p className="text-2xl font-semibold text-gray-900">₹10.00</p>
       </div>
     </div>
-    <button className="mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-3 font-medium text-white">Place Order</button>
+    <div className="flex flex-row flex-grow">
+    <input type="checkbox" id="tndc" checked className="text-large font-large"></input>
+    <label for="tndc" className="text-black text-lg">I hereby Agree To The <a className="text-blue-500" href="checkout">Terms And Conditions</a> Of "Shop360"</label>
+    </div>
+    <button onClick={initiateTransaction} className="mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-3 font-medium text-white items-center justify-between flex flex-row flex-grow">Pay & Place Order&nbsp;<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" /></svg>
+    </button>
   </div>
 </div>
-
 
 
 
@@ -250,33 +214,9 @@ const Checkout = () => {
 
 
 
-            <div className="container m-auto">
-                <h2 className="font-semibold text-xl">Review Cart Items</h2>
-            </div>
+          
 
-            <div className="sideCart bg-slate-500 p-6 m-2">
-                <ol className='list-decimal font-semibold'>
-                    {Object.keys(cart).length === 0 && <div className='my-4 font-normal'>No Items in the cart</div>}
-                    {Object.keys(cart).map((k) => (
-                        <li key={k}>
-                            <div className="item flex my-5">
-                                <div className='font-semibold'>{cart[k].name}({cart[k].size}/{cart[k].variant})</div>
-                                <div className='flex font-semibold items-center justify-center w-1/3 text-lg'>
-                                    <CiCircleMinus onClick={() => removeFromCart(k, 1)} className='cursor-pointer text-white' />
-                                    <span className='mx-2 text-sm'>{cart[k].qty}</span>
-                                    <CiCirclePlus onClick={() => addToCart(k, 1, cart[k].price, cart[k].name, cart[k].size, cart[k].variant)} className='cursor-pointer text-white' />
-                                </div>
-                            </div>
-                        </li>
-                    ))}
-                </ol>
-                <span className="font-bold">Subtotal: ₹{subTotal}</span>
-                <div className="mx-4">
-                    <button onClick={initiateTransaction} disabled={disabled} className="disabled:bg-blue-300 flex mr-2 text-white bg-blue-500 border-0 py-2 px-2 focus:outline-none hover:bg-blue-600 rounded text-sm">
-                        <BsBagCheckFill className='m-1' />Pay
-                    </button>
-                </div>
-            </div>
+                   
         </div>
 </div>
     );
