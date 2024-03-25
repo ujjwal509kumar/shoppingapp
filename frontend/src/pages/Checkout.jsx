@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { CiCirclePlus, CiCircleMinus } from "react-icons/ci";
-import { BsBagCheckFill } from "react-icons/bs";
 import { useCart } from "../context/CartContext";
 
 const Checkout = () => {
