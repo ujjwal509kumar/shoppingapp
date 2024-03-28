@@ -4,6 +4,8 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 const bcrypt = require('bcrypt');
+const Razorpay = require("razorpay");
+const crypto = require("crypto");
 
 require("dotenv").config();
 
@@ -11,6 +13,7 @@ require("dotenv").config();
 
 //import schema
 const User = require("./schema/UserSchema");
+const Order = require("./schema/OrderSchema");
 
 //import routes
 const registerRouter = require("./routes/RegisterRoute");
@@ -114,9 +117,9 @@ app.get('/api/products/:slug', async (req, res) => {
         }
 
         // Find all variants of the product based on title and category
-        const variants = await Product.find({ 
-            title: foundProduct.title, 
-            category: foundProduct.category 
+        const variants = await Product.find({
+            title: foundProduct.title,
+            category: foundProduct.category
         });
 
         // Organize variants by color and size
@@ -139,6 +142,82 @@ app.get('/api/products/:slug', async (req, res) => {
     }
 });
 
+//for payment gateway
+app.post("/order", async (req, res) => {
+    try {
+        const instance = new Razorpay({
+            key_id: process.env.RAZORPAY_KEY_ID,
+            key_secret: process.env.RAZORPAY_SECRET,
+        });
+
+        const options = req.body;
+        const order = await instance.orders.create(options);
+
+        if (!order) return res.status(500).send("Some error occured");
+
+        res.json(order);
+    } catch (error) {
+        res.status(500).send(error);
+    }
+});
+
+//for verifying the payment
+app.post("/order/validate", async (req, res) => {
+    const { razorpay_order_id, razorpay_payment_id, razorpay_signature } =
+        req.body;
+    const sha = crypto.createHmac("sha256", process.env.RAZORPAY_SECRET);
+    sha.update(`${razorpay_order_id}|${razorpay_payment_id}`);
+    const digest = sha.digest("hex");
+    if (digest !== razorpay_signature) {
+        return res.status(400).json({ msg: "Transaction is not legit!" });
+    }
+
+    res.json({
+        msg: "success",
+        orderId: razorpay_order_id,
+        paymentId: razorpay_payment_id,
+    });
+});
+
+//for saving orders in mongo db
+app.post("/orderdata", async (req, res) => {
+    try {
+        const newOrder = new Order(req.body);
+        await newOrder.save();
+        res.status(201).json({ message: "Order saved successfully" });
+    } catch (error) {
+        console.error("Error saving order:", error);
+        res.status(500).json({ error: "Internal server error" });
+    }
+});
+
+//for saving orders in mongo db and updating paymentId and orderId
+app.post("/updateorder", async (req, res) => {
+    try {
+        const { reciptid, paymentId, orderId } = req.body;
+
+        // Update the order by receiptId
+        const result = await Order.updateOne(
+            { reciptid: reciptid },
+            {
+                $set: {
+                    paymentid: paymentId,
+                    orderid: orderId,
+                    paymentstatus: "Success"
+                }
+            }
+        );
+
+        if (result.nModified === 0) {
+            return res.status(404).json({ message: "Order not found" });
+        }
+
+        res.status(200).json({ message: "Order updated successfully" });
+    } catch (error) {
+        console.error("Error updating order:", error);
+        res.status(500).json({ error: "Internal server error" });
+    }
+});
 
 //getting and verifying the forgotpass token
 app.get("/forgotpassword/:id/:token", async (req, res) => {
