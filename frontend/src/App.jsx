@@ -16,6 +16,7 @@ import Checkout from './pages/Checkout';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import TrackOrder from './pages/TrackOrder';
+import PostTransaction from './pages/PostTransaction';
 
 
 // Private Route
@@ -78,13 +79,17 @@ const router = createBrowserRouter([
     element: <Checkout></Checkout>
   },
   {
-    path: '*',
-    element: <PageNotFound></PageNotFound>
-  },
-  {
     path: '/TrackOrder',
     element: <TrackOrder></TrackOrder>
   },
+  {
+    path: '/thankyou',
+    element: <PostTransaction></PostTransaction>
+  },
+  {
+    path: '*',
+    element: <PageNotFound></PageNotFound>
+  }
 ]);
 
 
